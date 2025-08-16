@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do List with Alarm</title>
+  <link rel="stylesheet" href="styles/12-todo-list.css" />
+</head>
+<body>
+  <h1>My To-Do List ⏰</h1>
+  <p class="subtitle">Add tasks with due date & time</p>
+
+  <!-- Input row -->
+  <div class="todo-input-grid">
+    <input class="js-name-input name-input" type="text" placeholder="Task name" />
+    <input class="js-due-date-input due-date-input" type="date" />
+    <!-- Single 12-hour format time input -->
+    <input class="js-due-time-input due-time-input" type="time" step="60" lang="en-US" />
+    <button class="js-add-button add-todo-button">Add</button>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <span id="taskCount">Total: 0</span> | 
+    <span id="completedCount">Completed: 0</span>
+  </div>
+
+  <!-- Task list -->
+  <div class="js-todo-list"></div>
+
+  <!-- Random motivational quote -->
+  <div id="quote" class="quote"></div>
+
+  <!-- Hidden audio file for alarm -->
+  <audio id="alarmSound" src="alarm.mp3" preload="auto"></audio>
+
+  <!-- JS file -->
+  <script src="scripts/12-todo-list.js"></script>
+</body>
+</html>

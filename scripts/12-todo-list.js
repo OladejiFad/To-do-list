@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     todoList.forEach((todo, index) => {
       const { name, dueDate, dueTime, completed } = todo;
-
       const displayTime = dueTime ? formatTime12(dueTime) : '—';
 
       html += `
@@ -58,6 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const i = Number(e.currentTarget.dataset.index);
         if (!Number.isNaN(i)) {
           todoList[i].completed = e.currentTarget.checked;
+
+          // Stop alarm if completed
+          if (todoList[i].completed && todoList[i].reminded && alarmSound) {
+            alarmSound.pause();
+            alarmSound.currentTime = 0;
+          }
+
           saveTodos();
           renderTodoList();
         }
@@ -163,14 +169,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Event bindings ---
   addBtn.addEventListener('click', addTodo);
-  nameInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') addTodo();
-  });
-  dateInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') addTodo();
-  });
-  timeInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') addTodo();
+  [nameInput, dateInput, timeInput].forEach(input => {
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') addTodo();
+    });
   });
 
   // Initial render

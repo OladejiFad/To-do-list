@@ -1,41 +1,117 @@
-body{
-  font-family: Arial;
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  text-align: center;
+  background: linear-gradient(to right, #a8edea, #fed6e3);
+  padding: 20px;
 }
 
-.todo-grid,
-.todo-input-grid{
+/* Title & subtitle */
+h1 {
+  color: #333;
+}
+
+.subtitle {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Input row: task + date + time + add button */
+.todo-input-grid {
   display: grid;
-  grid-template-columns:200px 150px 100px ;
+  grid-template-columns: 1fr 160px 120px 100px;
   column-gap: 10px;
   row-gap: 10px;
   align-items: center;
-}
-
-.todo-input-grid {
-  margin-bottom: 10px;
-  align-items: stretch;
+  justify-content: center;
+  margin: 0 auto 15px;
+  max-width: 700px;
 }
 
 .name-input,
-.due-date-input {
+.due-date-input,
+.due-time-input {
   font-size: 15px;
   padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
 }
 
-.add-todo-button{
-  background-color: green;
+/* Task row: checkbox + name + date + time + delete */
+.todo-grid {
+  display: grid;
+  grid-template-columns: 40px 1fr 160px 100px 80px;
+  column-gap: 10px;
+  row-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+  max-width: 700px;
+  background: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Buttons */
+.add-todo-button {
+  background-color: #28a745;
   color: white;
   border: none;
   font-size: 15px;
   cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.add-todo-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
 }
 
 .delete-todo-button {
-  background-color: darkred;
+  background-color: crimson;
   color: white;
   border: none;
   font-size: 15px;
   cursor: pointer;
-  padding:10px 10px;
-  
+  padding: 8px;
+  border-radius: 5px;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.delete-todo-button:hover {
+  background-color: darkred;
+  transform: scale(1.05);
+}
+
+/* Completed tasks */
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+/* Alarm styles */
+.alarm-due {
+  color: #d9534f;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Stats and quotes */
+.stats {
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+.quote {
+  margin-top: 20px;
+  font-style: italic;
+  color: #444;
 }
